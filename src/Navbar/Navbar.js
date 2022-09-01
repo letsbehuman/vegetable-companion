@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React,  from 'react';
 import './navbarComponents.scss';
 import SearchBar from './SearchBar';
 import { FaCarrot } from 'react-icons/fa';

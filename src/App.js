@@ -16,11 +16,7 @@ const App = () => {
       setVegetables(data);
       console.log(data);
     });
-    // if (selectedCategory === 'Favorite') {
-    //   fetchFromAPI(`vegetables/?favorite`).then((data) => {
-    //     setVegetables(data);
-    //   });
-    // }
+
     if (searchTerm) {
       fetchFromAPI(`vegetables/${searchTerm}`).then((data) => {
         setVegetables(data);

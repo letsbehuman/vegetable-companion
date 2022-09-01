@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import VegetableView from '../VegetableView/VegetableView';
-import { fetchFromAPI } from '../utils/fetchFromAPI';
 import './Feed.scss';
 import { BsBasket } from 'react-icons/bs';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
