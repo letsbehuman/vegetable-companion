@@ -1,0 +1,58 @@
+$font-color--900: #ebe7e2;
+$font-color--200: #3a2717;
+
+$blue--800: #d6ebee;
+$blue--600: #a2c8c9;
+$blue--400: #93b6b8;
+$blue--200: #60737a;
+
+$brown--200: #876744;
+$brown--500: #ede3da;
+// $brown--800: #4d3e2e;
+$green--800: #cccdb4;
+$green--400: #a0af86;
+$green--600: #c8d3b6;
+
+$orange--600: #e7a16c;
+$orange--400: #bc6a40;
+
+$yellow--600: #eabb77;
+$yellow--400: #9f7844;
+
+$ff-title: 'Pacifico', cursive;
+$ff-subtitles: 'Fredoka One', cursive;
+$ff-text: 'Fredoka One', cursive;
+// font-family: 'Itim', cursive;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: $brown--200;
+}
+
+img {
+  max-width: 100%;
+}
+.App {
+  text-align: center;
+  height: 100%;
+}
+p {
+  font-family: $ff-text;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $ff-subtitles;
+}

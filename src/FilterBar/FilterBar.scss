@@ -1,0 +1,37 @@
+@import '../App.scss';
+.filterbar {
+  display: flex;
+  justify-content: center;
+
+  background-color: $yellow--600;
+
+  .filterbar__content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 2em;
+    width: 100%;
+    max-width: 75em;
+  }
+  .filterbar__title {
+    font-size: 1.3em;
+  }
+
+  .category-btn {
+    color: $font-color--900;
+    font-weight: 800;
+    text-transform: capitalize;
+    cursor: pointer;
+    background: $brown--200;
+    outline: none;
+    border: none;
+    padding: 7px 15px;
+    margin: 10px 0px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    &:hover {
+      transform: scale(1.1);
+      transition: all ease 0.4s;
+    }
+  }
+}

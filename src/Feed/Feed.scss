@@ -1,0 +1,144 @@
+@import '../App.scss';
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: $brown--200;
+
+  // overflow-y: hidden;
+}
+.main__results {
+  padding-top: 1em;
+  padding-left: 4em;
+  text-align: left;
+  font-weight: 800;
+  font-size: 2em;
+  color: $green--800;
+  span {
+    font-weight: 400;
+    color: $green--400;
+  }
+}
+.vegetables {
+  position: static;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1em;
+  width: auto;
+  padding-top: 1em;
+  justify-content: center;
+  overflow-y: auto;
+  height: 100%;
+  padding-bottom: 1em;
+  .vegetable-card {
+    display: flex;
+    flex-direction: column;
+    width: 20em;
+    height: 20em;
+    border: solid 10px $orange--400;
+    background-color: $orange--600;
+    padding: 1em;
+    gap: 1em;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 2em;
+
+    .vegetable__title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .vegetable__name {
+        color: $font-color--200;
+      }
+
+      .favorite-logo {
+        font-size: 1.2em;
+        margin-left: 1em;
+        cursor: pointer;
+      }
+    }
+    .vegetable__body {
+      cursor: pointer;
+      height: 100%;
+      width: 100%;
+      .vegetable__photo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 250px;
+        height: 180px;
+        border: solid $brown--200 6px;
+        border-radius: 1em;
+        margin-inline: auto;
+        box-shadow: 2px 2px 5px #75593c;
+        img {
+          border-radius: 0.6em;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+    &:hover {
+      transform: scale(1.01);
+      transition: all ease 0.5s;
+      box-shadow: 1px 1px 10px $yellow--600;
+    }
+  }
+
+  .vegetable-card--add {
+    display: flex;
+    justify-content: center;
+    padding: 2em;
+    transform: scale(0.8);
+    cursor: pointer;
+    button {
+      color: $orange--600;
+      background-color: $orange--400;
+      font-size: 3em;
+      border: none;
+      border-radius: 0.5em;
+      padding: 0.4em 0.5em;
+    }
+    .vegetable__name {
+      color: $font-color--200;
+    }
+  }
+}
+
+.pop-up__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba($brown--200, $alpha: 0.8);
+  z-index: 50;
+}
+.pop-up__body {
+  padding: 2em;
+  position: fixed;
+  border-radius: 1em;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  background-color: $brown--500;
+}
+.pop_up__header {
+  display: flex;
+  justify-content: flex-end;
+  button {
+    border: none;
+    color: $orange--400;
+    background-color: $orange--600;
+    padding: 0.5em 0.75em;
+    font-size: 1em;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}

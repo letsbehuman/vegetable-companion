@@ -1,0 +1,68 @@
+@import '../App.scss';
+
+.pop-up__content {
+  display: grid;
+  gap: 2em;
+  grid-template-columns: 3fr 2fr;
+  width: 50vw;
+  height: 80vh;
+  justify-content: space-around;
+  padding: 1em;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+
+  .vegetable__photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 100%;
+    border: solid $brown--200 6px;
+    border-radius: 1em;
+    grid-row: 1/8;
+    box-shadow: 2px 2px 5px #75593c;
+
+    img {
+      border-radius: 0.6em;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .plant-seed {
+    grid-column: 1/3;
+  }
+  .harvest {
+    grid-column: 1/3;
+  }
+  span {
+    font-weight: 600;
+  }
+}
+
+.pop-up__content--add {
+  display: flex;
+  flex-direction: column;
+  .pop-up__form {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1em;
+    text-align: left;
+    margin: 2em;
+    label {
+      display: flex;
+      flex-direction: column;
+    }
+    input {
+      padding: 0.2em;
+      border: none;
+    }
+    button {
+      padding: 0.5em;
+      grid-column: 1/3;
+      border-radius: 0.5em;
+      border: none;
+    }
+  }
+}
