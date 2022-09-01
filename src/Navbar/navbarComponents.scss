@@ -1,0 +1,47 @@
+@import '../App.scss';
+.nav {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  z-index: 50;
+  .wellcome {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: $green--400;
+    padding: 0.5em 4em;
+    justify-content: space-between;
+    .wellcome__header {
+      display: flex;
+      .title {
+        font-family: $ff-title;
+        font-size: 2em;
+        margin-left: 0.5em;
+      }
+    }
+    button {
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 0.5em;
+      cursor: pointer;
+      // background-color: $brown--500;
+      background-color: rgba($color: #ffffff, $alpha: 0.4);
+      margin-left: 5px;
+    }
+  }
+}
+.search-bar {
+  padding: 0 1em;
+  background-color: $green--600;
+  border-radius: 2em;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  .search-bar--input {
+    border: none;
+    outline: none;
+    width: 15em;
+    background-color: $green--600;
+  }
+}

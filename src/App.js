@@ -1,25 +1,65 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './Navbar/Navbar';
+import FilterBar from './FilterBar/FilterBar';
+import Feed from './Feed/Feed';
+import { fetchFromAPI } from './utils/fetchFromAPI';
+import { useState, useEffect } from 'react';
 
-function App() {
+const App = () => {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [vegetables, setVegetables] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    fetchFromAPI(`vegetables/?type=${selectedCategory}`).then((data) => {
+      setVegetables(data);
+      console.log(data);
+    });
+    // if (selectedCategory === 'Favorite') {
+    //   fetchFromAPI(`vegetables/?favorite`).then((data) => {
+    //     setVegetables(data);
+    //   });
+    // }
+    if (searchTerm) {
+      fetchFromAPI(`vegetables/${searchTerm}`).then((data) => {
+        setVegetables(data);
+      });
+    }
+  }, [selectedCategory, searchTerm]);
+
+  if (!vegetables) return 'loading... vegetables';
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <div className="nav">
+          <Navbar
+            setSearchTerm={setSearchTerm}
+            searchTerm={searchTerm}
+            setSelectedCategory={setSelectedCategory}
+            setVegetables={setVegetables}
+          />
+          <FilterBar
+            setSelectedCategory={setSelectedCategory}
+            setSearchTerm={setSearchTerm}
+          />
+        </div>
+        <Routes>
+          <Route
+            path="/"
+            exact
+            element={
+              <Feed
+                vegetables={vegetables}
+                selectedCategory={selectedCategory}
+                setVegetables={setVegetables}
+              />
+            }
+          ></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
