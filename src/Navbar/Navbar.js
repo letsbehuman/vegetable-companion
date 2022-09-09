@@ -8,7 +8,7 @@ const Navbar = ({ setSearchTerm, setSelectedCategory, user, logOut }) => {
   return (
     <nav className="wellcome">
       <div className="wellcome__header">
-        <h3 className="welcome__title">Welcome to</h3>
+        <h3 className="wellcome__message">Welcome to</h3>
         <div className="title">
           {'Vegetable Companion '}
           <span>

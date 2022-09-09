@@ -13,15 +13,22 @@
     align-items: center;
     padding: 2em;
     gap: 1em;
-    max-width: 300px;
+    width: 30em;
     background-color: $green--800;
     border-radius: 2em;
     input,
     button {
+      text-align: center;
       padding: 0.3em;
       border-radius: 0.5em;
       border: none;
       width: 15em;
+      margin-top: 0.5em;
     }
+  }
+}
+@media all and (max-width: 768px) {
+  .user-view {
+    padding: 3em;
   }
 }

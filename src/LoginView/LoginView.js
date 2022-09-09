@@ -16,8 +16,13 @@ const LoginView = ({ user, setUser }) => {
   };
   const handleSubmitLogin = (e) => {
     e.preventDefault();
-    console.log(formData);
-    setUser({ ...formData, isLogin: true });
+    console.log(formData.password);
+    const { userName, password } = formData;
+    if (userName.length >= 3 && password.length >= 3) {
+      setUser({ ...formData, isLogin: true });
+    } else {
+      alert('Wrong credentials');
+    }
   };
   const handleSubmitRegister = (e) => {
     e.preventDefault();
@@ -47,63 +52,53 @@ const LoginView = ({ user, setUser }) => {
     <div className="user-view">
       {login ? (
         <form className="form" onSubmit={handleSubmitLogin}>
-          <label>
-            {'UserName'}
-            <input
-              type="text"
-              placeholder="UserName"
-              onChange={(e) => onChangeHandle(e)}
-              name="userName"
-              value={formData.userName}
-            ></input>
-          </label>
-          <label>
-            {'Password'}
-            <input
-              type="password"
-              placeholder="Password"
-              onChange={(e) => onChangeHandle(e)}
-              name="password"
-              value={formData.password}
-            ></input>
-          </label>
-          <button onClick={handleSubmitLogin}>Submit</button>
+          <label>{'UserName'}</label>
+          <input
+            type="text"
+            placeholder="UserName"
+            onChange={(e) => onChangeHandle(e)}
+            name="userName"
+            value={formData.userName}
+          ></input>
+          <label>{'Password'}</label>
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => onChangeHandle(e)}
+            name="password"
+            value={formData.password}
+          ></input>
+          <button onClick={(e) => handleSubmitLogin(e)}>Submit</button>
           <button type="button" onClick={() => toggleLoginRegister()}>
             Register
           </button>
         </form>
       ) : (
         <form className="form" onSubmit={handleSubmitRegister}>
-          <label>
-            {'UserName'}
-            <input
-              type="text"
-              placeholder="UserName"
-              onChange={(e) => onChangeHandle(e)}
-              name="userName"
-              value={formData.userName}
-            ></input>
-          </label>
-          <label>
-            {'Password'}
-            <input
-              type="password"
-              placeholder="Password"
-              onChange={(e) => onChangeHandle(e)}
-              name="password"
-              value={formData.password}
-            ></input>
-          </label>
-          <label>
-            {'Confirm Password'}
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              onChange={(e) => onChangeHandle(e)}
-              name="confirmPassword"
-              value={formData.confirmPassword}
-            ></input>
-          </label>
+          <label>{'UserName'}</label>
+          <input
+            type="text"
+            placeholder="UserName"
+            onChange={(e) => onChangeHandle(e)}
+            name="userName"
+            value={formData.userName}
+          ></input>
+          <label>{'Password'}</label>
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => onChangeHandle(e)}
+            name="password"
+            value={formData.password}
+          ></input>
+          <label>{'Confirm Password'}</label>
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            onChange={(e) => onChangeHandle(e)}
+            name="confirmPassword"
+            value={formData.confirmPassword}
+          ></input>
           <button onClick={handleSubmitRegister}>Register</button>
           <button type="button" onClick={() => toggleLoginRegister()}>
             Login

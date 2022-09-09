@@ -2,9 +2,7 @@
 .filterbar {
   display: flex;
   justify-content: center;
-
   background-color: $yellow--600;
-
   .filterbar__content {
     display: flex;
     justify-content: space-around;
@@ -32,6 +30,15 @@
     &:hover {
       transform: scale(1.1);
       transition: all ease 0.4s;
+    }
+  }
+}
+@media all and (max-width: 690px) {
+  .filterbar {
+    .filterbar__content {
+      overflow-x: scroll;
+      justify-content: space-between;
+      gap: 1em;
     }
   }
 }

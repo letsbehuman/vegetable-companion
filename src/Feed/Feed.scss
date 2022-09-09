@@ -89,10 +89,18 @@
 
   .vegetable-card--add {
     display: flex;
+    flex-direction: column;
+    border: solid 10px $orange--400;
+    background-color: $orange--600;
+    border-radius: 2em;
     justify-content: center;
-    padding: 2em;
-    transform: scale(0.8);
+    align-items: center;
+    padding: 1em;
+    margin: auto 2.7em;
+    gap: 1em;
+    height: auto;
     cursor: pointer;
+
     button {
       color: $orange--600;
       background-color: $orange--400;
@@ -103,6 +111,11 @@
     }
     .vegetable__name {
       color: $font-color--200;
+    }
+    &:hover {
+      transform: scale(1.1);
+      transition: all ease 0.5s;
+      box-shadow: 1px 1px 10px $yellow--600;
     }
   }
 }
@@ -140,5 +153,16 @@
     font-size: 1em;
     border-radius: 50%;
     cursor: pointer;
+  }
+}
+
+@media all and (max-width: 690px) {
+  .main__results {
+    display: flex;
+    flex-direction: row;
+    padding: 1em;
+    font-size: 1.2em;
+    gap: 1em;
+    justify-content: center;
   }
 }

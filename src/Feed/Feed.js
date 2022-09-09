@@ -42,7 +42,7 @@ const Vegetables = ({ vegetables, setVegetables, selectedCategory, user }) => {
       </div>
       <div className="vegetables">
         <div
-          className="vegetable-card--add vegetable-card"
+          className="vegetable-card--add"
           key="new"
           onClick={() => addVegetable('new')}
         >
