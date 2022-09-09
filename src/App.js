@@ -16,11 +16,7 @@ const App = () => {
       setVegetables(data);
       console.log(data);
     });
-    // if (selectedCategory === 'Favorite') {
-    //   fetchFromAPI(`vegetables/?favorite`).then((data) => {
-    //     setVegetables(data);
-    //   });
-    // }
+
     if (searchTerm) {
       fetchFromAPI(`vegetables/${searchTerm}`).then((data) => {
         setVegetables(data);
@@ -28,7 +24,6 @@ const App = () => {
     }
   }, [selectedCategory, searchTerm]);
 
-  if (!vegetables) return 'loading... vegetables';
   return (
     <div className="App">
       <BrowserRouter>
@@ -44,22 +39,28 @@ const App = () => {
             setSearchTerm={setSearchTerm}
           />
         </div>
-        <Routes>
-          <Route
-            path="/"
-            exact
-            element={
-              <Feed
-                vegetables={vegetables}
-                selectedCategory={selectedCategory}
-                setVegetables={setVegetables}
-              />
-            }
-          ></Route>
-        </Routes>
+        {!vegetables ? (
+          'loading...'
+        ) : (
+          <Routes>
+            <Route
+              path="/"
+              exact
+              element={
+                <Feed
+                  vegetables={vegetables}
+                  selectedCategory={selectedCategory}
+                  setVegetables={setVegetables}
+                />
+              }
+            ></Route>
+          </Routes>
+        )}
       </BrowserRouter>
     </div>
   );
 };
 
 export default App;
+
+//

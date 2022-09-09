@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import VegetableView from '../VegetableView/VegetableView';
-import { fetchFromAPI } from '../utils/fetchFromAPI';
 import './Feed.scss';
 import { BsBasket } from 'react-icons/bs';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
@@ -24,24 +23,34 @@ const Vegetables = ({ vegetables, setVegetables, selectedCategory }) => {
   const markFavorite = (id) => {
     console.log('Click', id);
     setVegetables((prevVegetable) => {
-      const newVegetable = [];
-      for (let i = 0; i < prevVegetable.length; i++) {
-        const currVegetable = prevVegetable[i];
-        if (currVegetable.id === id) {
-          const updatedVegetable = {
-            ...currVegetable,
-            favorite: !currVegetable.favorite,
-          };
-          newVegetable.push(updatedVegetable);
-        } else {
-          newVegetable.push(currVegetable);
-        }
-      }
-      return newVegetable;
+      return prevVegetable.map((vegetable) => {
+        return vegetable.id === id
+          ? { ...vegetable, favorite: !vegetable.favorite }
+          : vegetable;
+      });
     });
-    console.log(vegetables.filter((vegetable) => vegetable.favorite === true));
   };
 
+  // const markFavorite = (id) => {
+  //   console.log('Click', id);
+  //   setVegetables((prevVegetable) => {
+  //     const newVegetable = [];
+  //     for (let i = 0; i < prevVegetable.length; i++) {
+  //       const currVegetable = prevVegetable[i];
+  //       if (currVegetable.id === id) {
+  //         const updatedVegetable = {
+  //           ...currVegetable,
+  //           favorite: !currVegetable.favorite,
+  //         };
+  //         newVegetable.push(updatedVegetable);
+  //       } else {
+  //         newVegetable.push(currVegetable);
+  //       }
+  //     }
+  //     return newVegetable;
+  //   });
+  //   console.log(vegetables.filter((vegetable) => vegetable.favorite === true));
+  // };
   return (
     <div className="main">
       <div className="main__results">

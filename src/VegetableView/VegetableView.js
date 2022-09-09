@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './vegetableView.scss';
-// import ReactDom from 'react-dom';
 
 const VegetableView = ({ vegetable }) => {
   return (
