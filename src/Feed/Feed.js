@@ -6,10 +6,10 @@ import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { CgExtensionAdd } from 'react-icons/cg';
 import AddVegetable from '../VegetableView/AddVegetable';
 
-const Vegetables = ({ vegetables, setVegetables, selectedCategory }) => {
+const Vegetables = ({ vegetables, setVegetables, selectedCategory, user }) => {
   const [popUpContent, setPopUpContent] = useState([]);
   const [popUpToggle, setPopUpToggle] = useState(false);
-  const [newVegetable, setNewVegetable] = useState(false);
+  const [newVegetable, setNewVegetable] = useState({});
 
   const changeContent = (vegetableObj) => {
     setPopUpContent([vegetableObj]);
@@ -31,26 +31,6 @@ const Vegetables = ({ vegetables, setVegetables, selectedCategory }) => {
     });
   };
 
-  // const markFavorite = (id) => {
-  //   console.log('Click', id);
-  //   setVegetables((prevVegetable) => {
-  //     const newVegetable = [];
-  //     for (let i = 0; i < prevVegetable.length; i++) {
-  //       const currVegetable = prevVegetable[i];
-  //       if (currVegetable.id === id) {
-  //         const updatedVegetable = {
-  //           ...currVegetable,
-  //           favorite: !currVegetable.favorite,
-  //         };
-  //         newVegetable.push(updatedVegetable);
-  //       } else {
-  //         newVegetable.push(currVegetable);
-  //       }
-  //     }
-  //     return newVegetable;
-  //   });
-  //   console.log(vegetables.filter((vegetable) => vegetable.favorite === true));
-  // };
   return (
     <div className="main">
       <div className="main__results">
@@ -115,14 +95,18 @@ const Vegetables = ({ vegetables, setVegetables, selectedCategory }) => {
               <div>
                 {popUpContent.map((vegetable) => {
                   return (
-                    <VegetableView vegetable={vegetable} key={vegetable.id} />
+                    <VegetableView
+                      vegetable={vegetable}
+                      key={vegetable.id}
+                      markFavorite={markFavorite}
+                    />
                   );
                 })}
               </div>
             </div>
           </div>
         )}
-        {newVegetable && (
+        {!newVegetable && (
           <div className="pop-up__container" onClick={addVegetable}>
             <div className="pop-up__body" onClick={(e) => e.stopPropagation()}>
               <div className="pop_up__header">

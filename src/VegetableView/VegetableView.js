@@ -1,36 +1,54 @@
 import React from 'react';
 import './vegetableView.scss';
+import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 
-const VegetableView = ({ vegetable }) => {
+const VegetableView = ({ vegetable, markFavorite }) => {
   return (
     <div className="pop-up__content">
       <div className="vegetable__photo">
         <img src={vegetable.image} alt="vegetable" />
+        {vegetable.favorite === false ? (
+          <MdFavoriteBorder
+            className="favorite-logo"
+            onClick={() => {
+              markFavorite(vegetable.id);
+            }}
+          />
+        ) : (
+          <MdFavorite
+            className="favorite-logo"
+            onClick={() => {
+              markFavorite(vegetable.id);
+            }}
+          />
+        )}
       </div>
       <div className="property">
-        Type:
+        {'Type: '}
         <span className="property__desc"> {vegetable.type}</span>
       </div>
       <div className="property">
-        Spacying: <span className="property__desc">{vegetable.spacying}</span>
+        {'Spacying: '}
+        <span className="property__desc">{vegetable.spacying}</span>
       </div>
       <div className="property">
-        Height: <span className="property__desc">{vegetable.height}</span>
+        {'Height: '}
+        <span className="property__desc">{vegetable.height}</span>
       </div>
       <div className="property">
-        Germination:{' '}
+        {'Germination: '}
         <span className="property__desc">{vegetable.germination}</span>
       </div>
       <div className="property">
-        Maturation:{' '}
+        {'Maturation: '}
         <span className="property__desc">{vegetable.maturation}</span>
       </div>
       <div className="property">
-        Watch out for:
+        {'Watch out for: '}
         <span className="property__desc"> {vegetable.watchOut}</span>
       </div>
       <div className="property">
-        Favorite:
+        {'Favorite: '}
         <span className="property__desc"> {vegetable.favorite}</span>
       </div>
       <div className="plant-seed">{vegetable.plantSeeds}</div>

@@ -5,16 +5,23 @@ import FilterBar from './FilterBar/FilterBar';
 import Feed from './Feed/Feed';
 import { fetchFromAPI } from './utils/fetchFromAPI';
 import { useState, useEffect } from 'react';
+import LoginView from './LoginView/LoginView';
 
 const App = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [vegetables, setVegetables] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [user, setUser] = useState({
+    userName: '',
+    password: '',
+    confirmPassword: '',
+    favorite: [],
+    isLogin: false,
+  });
 
   useEffect(() => {
     fetchFromAPI(`vegetables/?type=${selectedCategory}`).then((data) => {
       setVegetables(data);
-      console.log(data);
     });
 
     if (searchTerm) {
@@ -22,25 +29,37 @@ const App = () => {
         setVegetables(data);
       });
     }
-  }, [selectedCategory, searchTerm]);
+  }, [selectedCategory, searchTerm, user]);
+
+  const logOut = () => {
+    setUser({
+      userName: '',
+      password: '',
+      confirmPassword: '',
+      favorite: [],
+      isLogin: false,
+    });
+  };
 
   return (
     <div className="App">
       <BrowserRouter>
         <div className="nav">
           <Navbar
+            user={user}
             setSearchTerm={setSearchTerm}
-            searchTerm={searchTerm}
             setSelectedCategory={setSelectedCategory}
-            setVegetables={setVegetables}
+            logOut={logOut}
           />
-          <FilterBar
-            setSelectedCategory={setSelectedCategory}
-            setSearchTerm={setSearchTerm}
-          />
+          {user.isLogin && (
+            <FilterBar
+              setSelectedCategory={setSelectedCategory}
+              setSearchTerm={setSearchTerm}
+            />
+          )}
         </div>
-        {!vegetables ? (
-          'loading...'
+        {!user.isLogin ? (
+          <LoginView user={user} setUser={setUser} />
         ) : (
           <Routes>
             <Route
@@ -51,6 +70,7 @@ const App = () => {
                   vegetables={vegetables}
                   selectedCategory={selectedCategory}
                   setVegetables={setVegetables}
+                  user={user}
                 />
               }
             ></Route>

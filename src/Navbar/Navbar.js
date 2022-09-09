@@ -2,8 +2,9 @@ import React from 'react';
 import './navbarComponents.scss';
 import SearchBar from './SearchBar';
 import { FaCarrot } from 'react-icons/fa';
+import { FiLogOut } from 'react-icons/fi';
 
-const Navbar = ({ searchTerm, setSearchTerm, setSelectedCategory }) => {
+const Navbar = ({ setSearchTerm, setSelectedCategory, user, logOut }) => {
   return (
     <nav className="wellcome">
       <div className="wellcome__header">
@@ -15,11 +16,17 @@ const Navbar = ({ searchTerm, setSearchTerm, setSelectedCategory }) => {
           </span>
         </div>
       </div>
-      <SearchBar
-        setSearchTerm={setSearchTerm}
-        searchTerm={searchTerm}
-        setSelectedCategory={setSelectedCategory}
-      />
+      {user.userName && (
+        <>
+          <SearchBar
+            setSearchTerm={setSearchTerm}
+            setSelectedCategory={setSelectedCategory}
+          />
+          <button onClick={() => logOut()} style={{ marginLeft: '1em' }}>
+            <FiLogOut />
+          </button>
+        </>
+      )}
     </nav>
   );
 };
