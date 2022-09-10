@@ -10,13 +10,11 @@ const LoginView = ({ user, setUser }) => {
     confirmPassword: '',
   });
   const toggleLoginRegister = () => {
-    // console.log('toogle click');
     setLogin(!login);
     setRegister(!register);
   };
   const handleSubmitLogin = (e) => {
     e.preventDefault();
-    console.log(formData.password);
     const { userName, password } = formData;
     if (userName.length >= 3 && password.length >= 3) {
       setUser({ ...formData, isLogin: true });
@@ -29,14 +27,10 @@ const LoginView = ({ user, setUser }) => {
     if (formData.password === formData.confirmPassword) {
       if (formData.userName.length > 3) {
         setUser(formData);
-        console.log('succes');
       }
     } else {
-      console.log('not macht');
       alert('Wrong credentials');
     }
-
-    console.log(formData);
   };
 
   const onChangeHandle = (e) => {

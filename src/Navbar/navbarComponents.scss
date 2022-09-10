@@ -40,6 +40,7 @@
   height: 2em;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   .search-bar--input {
     border: none;
     outline: none;
@@ -47,7 +48,8 @@
     background-color: $green--600;
   }
 }
-@media all and (max-width: 820px) {
+
+@media all and (max-width: 990px) {
   .nav {
     .wellcome {
       padding: 0.5em 2em;

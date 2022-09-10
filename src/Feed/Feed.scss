@@ -166,3 +166,9 @@
     justify-content: center;
   }
 }
+@media all and (max-width: 820px) {
+  .pop-up__body {
+    padding: 1em;
+    width: 80%;
+  }
+}
