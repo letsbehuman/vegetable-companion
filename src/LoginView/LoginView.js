@@ -37,13 +37,10 @@ const LoginView = ({ setUser }) => {
     e.preventDefault();
     const { userName, password } = formData;
     axios
-      .post(
-        'https://vegetable-companion-backend.onrender.com/api/users/signin',
-        {
-          userName: userName,
-          password: password,
-        }
-      )
+      .post('https://lit-forest-04624.herokuapp.com/api/users/signin', {
+        userName: userName,
+        password: password,
+      })
       .then((data) => {
         const { userName, password } = data.data;
         if (userName === userName && password === password) {
@@ -68,12 +65,9 @@ const LoginView = ({ setUser }) => {
   const handleSubmitRegister = (e) => {
     e.preventDefault();
     axios
-      .post(
-        `https://vegetable-companion-backend.onrender.com/api/users/register`,
-        {
-          ...formData,
-        }
-      )
+      .post(`https://lit-forest-04624.herokuapp.com/api/users/register`, {
+        ...formData,
+      })
       .then((res) => {
         console.log(res.data);
         setLogin(!login);
