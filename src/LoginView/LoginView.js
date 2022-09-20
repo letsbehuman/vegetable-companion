@@ -37,10 +37,13 @@ const LoginView = ({ setUser }) => {
     e.preventDefault();
     const { userName, password } = formData;
     axios
-      .post('http://localhost:8080/api/users/signin', {
-        userName: userName,
-        password: password,
-      })
+      .post(
+        'https://vegetable-companion-backend.onrender.com/api/users/signin',
+        {
+          userName: userName,
+          password: password,
+        }
+      )
       .then((data) => {
         const { userName, password } = data.data;
         if (userName === userName && password === password) {
@@ -65,9 +68,12 @@ const LoginView = ({ setUser }) => {
   const handleSubmitRegister = (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:8080/api/users/register`, {
-        ...formData,
-      })
+      .post(
+        `https://vegetable-companion-backend.onrender.com/api/users/register`,
+        {
+          ...formData,
+        }
+      )
       .then((res) => {
         console.log(res.data);
         setLogin(!login);
