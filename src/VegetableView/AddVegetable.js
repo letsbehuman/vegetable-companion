@@ -1,7 +1,12 @@
 import React from 'react';
 import './vegetableView.scss';
 
-const AddVegetable = () => {
+const AddVegetable = ({ setNewVegetable, newVegetable }) => {
+  const handleAddVegetable = (e) => {
+    e.preventDefault();
+    setNewVegetable(!newVegetable);
+  };
+
   return (
     <div className="pop-up__content--add">
       <div> Adding vegetable</div>
@@ -36,10 +41,6 @@ const AddVegetable = () => {
           <input type="text" placeholder="Days of maturation"></input>
         </label>
         <label>
-          Height:
-          <input type="text" placeholder="cm"></input>
-        </label>
-        <label>
           Spacing:
           <input type="text" placeholder="1-square-foot spacing"></input>
         </label>
@@ -47,7 +48,9 @@ const AddVegetable = () => {
           Watch out for:
           <input type="text" placeholder="Special caution"></input>
         </label>
-        <button type="submit">Add vegetable</button>
+        <button type="submit" onClick={(e) => handleAddVegetable(e)}>
+          Add vegetable
+        </button>
       </form>
     </div>
   );

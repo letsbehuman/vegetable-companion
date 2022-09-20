@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import VegetableView from '../VegetableView/VegetableView';
 import './Feed.scss';
 import { BsBasket } from 'react-icons/bs';
@@ -6,7 +6,7 @@ import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { CgExtensionAdd } from 'react-icons/cg';
 import AddVegetable from '../VegetableView/AddVegetable';
 
-const Vegetables = ({ vegetables, setVegetables, selectedCategory, user }) => {
+const Vegetables = ({ vegetables, setVegetables, selectedCategory }) => {
   const [popUpContent, setPopUpContent] = useState([]);
   const [popUpToggle, setPopUpToggle] = useState(false);
   const [newVegetable, setNewVegetable] = useState({});
@@ -18,17 +18,22 @@ const Vegetables = ({ vegetables, setVegetables, selectedCategory, user }) => {
 
   const addVegetable = (str) => {
     setNewVegetable(!newVegetable);
-    console.log('click new');
   };
-  const markFavorite = (id) => {
-    console.log('Click', id);
+  const markFavorite = (name) => {
+    console.log('Click', name);
     setVegetables((prevVegetable) => {
       return prevVegetable.map((vegetable) => {
-        return vegetable.id === id
+        return vegetable.name === name
           ? { ...vegetable, favorite: !vegetable.favorite }
           : vegetable;
       });
     });
+  };
+
+  const formatMonths = (veg) => {
+    if (!veg) return;
+
+    return veg.toString().replaceAll(',', ', ');
   };
 
   return (
@@ -56,18 +61,18 @@ const Vegetables = ({ vegetables, setVegetables, selectedCategory, user }) => {
             <div className="vegetable-card" key={veg.id}>
               <div className="vegetable__title">
                 <h2 className="vegetable__name">{veg.name} </h2>
-                {veg.favorite === false ? (
+                {!veg.favorite ? (
                   <MdFavoriteBorder
                     className="favorite-logo"
                     onClick={() => {
-                      markFavorite(veg.id);
+                      markFavorite(veg.name);
                     }}
                   />
                 ) : (
                   <MdFavorite
                     className="favorite-logo"
                     onClick={() => {
-                      markFavorite(veg.id);
+                      markFavorite(veg.name);
                     }}
                   />
                 )}
@@ -79,8 +84,10 @@ const Vegetables = ({ vegetables, setVegetables, selectedCategory, user }) => {
                 <div className="vegetable__photo">
                   <img src={veg.image} alt="vegetable" />
                 </div>
-                <p className="plant-seed">{veg.plantSeeds}</p>
-                <p className="harvest">{veg.harvest}</p>
+                <p className="plant-seed">
+                  Plant seeds: {formatMonths(veg.plantseeds)}
+                </p>
+                <p className="harvest">Harvest: {formatMonths(veg.harvest)}</p>
               </div>
             </div>
           );
@@ -99,6 +106,7 @@ const Vegetables = ({ vegetables, setVegetables, selectedCategory, user }) => {
                       vegetable={vegetable}
                       key={vegetable.id}
                       markFavorite={markFavorite}
+                      formatMonths={formatMonths}
                     />
                   );
                 })}
@@ -112,7 +120,10 @@ const Vegetables = ({ vegetables, setVegetables, selectedCategory, user }) => {
               <div className="pop_up__header">
                 <button onClick={addVegetable}>X</button>
               </div>
-              <AddVegetable />
+              <AddVegetable
+                setNewVegetable={setNewVegetable}
+                addVegetable={addVegetable}
+              />
             </div>
           </div>
         )}

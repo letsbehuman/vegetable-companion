@@ -12,20 +12,22 @@ const App = () => {
   const [vegetables, setVegetables] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [user, setUser] = useState({
+    id: '',
+    name: '',
     userName: '',
-    password: '',
-    confirmPassword: '',
     favorite: [],
     isLogin: false,
   });
 
+  const [favVegetables, setFavVegetables] = useState(['Onions', 'Broccoli']);
+
   useEffect(() => {
-    fetchFromAPI(`vegetables/?type=${selectedCategory}`).then((data) => {
+    fetchFromAPI(`vegetables/${selectedCategory}`).then((data) => {
       setVegetables(data);
     });
 
     if (searchTerm) {
-      fetchFromAPI(`vegetables/${searchTerm}`).then((data) => {
+      fetchFromAPI(`vegetables/search/${searchTerm}`).then((data) => {
         setVegetables(data);
       });
     }
@@ -71,6 +73,8 @@ const App = () => {
                   selectedCategory={selectedCategory}
                   setVegetables={setVegetables}
                   user={user}
+                  setFavVegetables={setFavVegetables}
+                  favVegetables={favVegetables}
                 />
               }
             ></Route>
