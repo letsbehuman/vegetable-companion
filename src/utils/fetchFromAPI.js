@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://lit-forest-04624.herokuapp.com//api';
+const BASE_URL = 'https://lit-forest-04624.herokuapp.com/api';
 
 export const fetchFromAPI = async (url) => {
   try {

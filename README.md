@@ -18,3 +18,4 @@ Things to improve:
 - Modify favorite list functionality
 - Hide incomplete information in vegetable card
 - Infinitely improve the code and styling
+- Improve validation and security

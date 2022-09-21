@@ -19,7 +19,7 @@ const App = () => {
     isLogin: false,
   });
 
-  const [favVegetables, setFavVegetables] = useState(['Onions', 'Broccoli']);
+  const [favVegetables, setFavVegetables] = useState([]);
 
   useEffect(() => {
     fetchFromAPI(`vegetables/${selectedCategory}`).then((data) => {
